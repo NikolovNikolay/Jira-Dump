@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.com.nnikolov'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+Properties properties = new Properties()
+def propertiesFile = project.rootProject.file('local.properties')
+dependencies {
+
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
