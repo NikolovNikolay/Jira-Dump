@@ -1,41 +1,28 @@
 package com.nnikolov.jiradump.model;
 
 /**
- *
+ * Representing an issue in the JIRA Platform
  */
 public class Issue extends IssueMeta {
 
-    private String summary;
-
     private String url;
-
     private IssueFields fields;
 
-    public void buildUrl(String browseUrl) {
+    /**
+     * Builds a link that can be opened in browser
+     *
+     * @param browseUrl url for review
+     */
+    public Issue buildUrl(String browseUrl) {
         url = browseUrl + getKey();
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
+        return this;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public IssueFields getFields() {
         return fields;
-    }
-
-    public void setFields(IssueFields fields) {
-        this.fields = fields;
     }
 }

@@ -1,0 +1,32 @@
+{
+  "id" : "1090853",
+  "self" : "https://jira.atlassian.com/rest/api/2/issue/1090853",
+  "key" : "SRCTREEWIN-10944",
+  "url" : "https://jira.atlassian.com/browse/SRCTREEWIN-10944",
+  "fields" : {
+    "issuetype" : {
+      "id" : "1",
+      "self" : "https://jira.atlassian.com/rest/api/2/issuetype/1",
+      "description" : "A problem which impairs or prevents the functions of the product.",
+      "iconUrl" : "https://jira.atlassian.com/secure/viewavatar?size=xsmall&avatarId=51493&avatarType=issuetype",
+      "name" : "Bug",
+      "subtask" : false,
+      "avatarId" : 51493
+    },
+    "priority" : {
+      "id" : "4",
+      "self" : "https://jira.atlassian.com/rest/api/2/priority/4",
+      "iconUrl" : "https://jira.atlassian.com/images/icons/priorities/trivial.svg",
+      "name" : "Low"
+    },
+    "summary" : "В мобильном приложении сайта \"Укрзалізниця\" при повороте мобильного устройства (ОС Android) в горизонтальное положение появляется требование повернуть устройство вертикально для дальнейшей работы с приложением  ",
+    "description" : "Действие:\r\n\r\n1.Открыть мобильное приложение сайта \"Укрзалізниця\"\r\n\r\n2.Повернуть мобильное устройство в горизонтальное положение\r\n\r\nОжидаемый результат:\r\n\r\nНормальная работа приложения\r\n\r\nФактический результат:\r\n # Белый фон экрана\r\n # Ответ \"У вас нет актуальных билетов\"\r\n # Требование повернуть устройство вертикально для дальнейшей работы с приложением\r\n\r\n ",
+    "reporter" : {
+      "name" : "zabzab2"
+    },
+    "created" : "2018-11-20T19:25:45.139+0000",
+    "comment" : {
+      "comments" : [ ]
+    }
+  }
+}
