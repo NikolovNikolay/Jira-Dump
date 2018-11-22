@@ -1,5 +1,7 @@
 package com.nnikolov.jiradump.env;
 
+import com.nnikolov.jiradump.RuntimeConstants;
+
 /**
  * Information for persisting json files
  */
@@ -14,14 +16,14 @@ public final class JsonEnvironmentConfiguration extends BaseEnvironmentConfigura
     }
 
     public String getBaseOutputDirName() {
-        return properties.getProperty(BASE_OUTPUT_DIR_NAME);
+        return RuntimeConstants.BASE_OUTPUT_DIR_NAME;
     }
 
     public String getOutputDirName() {
-        return properties.getProperty(OUTPUT_DIR_NAME);
+        return RuntimeConstants.JSON_OUTPUT_DIR_NAME;
     }
 
     public String getOutputRoot() {
-        return properties.getProperty(OUTPUT_ROOT);
+        return RuntimeConstants.OUTPUT_ROOT;
     }
 }

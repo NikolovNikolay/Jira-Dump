@@ -1,5 +1,7 @@
 package com.nnikolov.jiradump.env;
 
+import com.nnikolov.jiradump.RuntimeConstants;
+
 public class XmlEnvironmentConfiguration extends BaseEnvironmentConfiguration {
 
     private static String OUTPUT_DIR_NAME = "XML_OUTPUT_DIR_NAME";
@@ -11,14 +13,14 @@ public class XmlEnvironmentConfiguration extends BaseEnvironmentConfiguration {
     }
 
     public String getBaseOutputDirName() {
-        return properties.getProperty(BASE_OUTPUT_DIR_NAME);
+        return RuntimeConstants.BASE_OUTPUT_DIR_NAME;
     }
 
     public String getOutputDirName() {
-        return properties.getProperty(OUTPUT_DIR_NAME);
+        return RuntimeConstants.XML_OUTPUT_DIR_NAME;
     }
 
     public String getOutputRoot() {
-        return properties.getProperty(OUTPUT_ROOT);
+        return RuntimeConstants.OUTPUT_ROOT;
     }
 }
