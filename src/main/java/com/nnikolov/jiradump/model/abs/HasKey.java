@@ -1,4 +1,4 @@
-package com.nnikolov.jiradump.model;
+package com.nnikolov.jiradump.model.abs;
 
 /**
  * Marks the entity as having an alias key to be associated with a project

@@ -1,5 +1,8 @@
 package com.nnikolov.jiradump.utils;
 
+/**
+ * Util methods for working with strings
+ */
 public abstract class StringUtils {
 
     private StringUtils() {

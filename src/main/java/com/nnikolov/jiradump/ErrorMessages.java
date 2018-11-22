@@ -7,4 +7,9 @@ public class ErrorMessages {
 
     public static final String CODE_20001_COULD_NOT_WRITE_JSON_FILE = "[20001] Could not write file '%s.json'";
     public static final String CODE_20002_COULD_NOT_WRITE_XML_FILE = "[20002] Could not write file '%s.xml'";
+
+    public static final String CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED = "[30001] Interrupting JIRA issues dump because of unexpected error";
+    public static final String CODE_3002_FETCH_ISSUE_CALL_FAILED = "[30002] Fetching issue call failed";
+    public static final String CODE_3003_FETCH_ISSUE_CALL_FAILED = "[30003] Could not get next page of issues. Aborting...";
+    public static final String CODE_3004_PARSE_ISSUE_FAILED = "[30004] Could not parse fetched issue";
 }

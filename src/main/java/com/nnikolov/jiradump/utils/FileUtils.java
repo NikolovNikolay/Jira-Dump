@@ -2,11 +2,25 @@ package com.nnikolov.jiradump.utils;
 
 import java.io.File;
 
+/**
+ * Helper class for working with files
+ */
 public abstract class FileUtils {
 
-    public static boolean createDirctory(File dir) {
+    /**
+     * Creates a directory
+     *
+     * @param dir the directory to create
+     * @return true - if success
+     */
+    public static boolean createDirectory(File dir) {
         if (!(dir.exists() && dir.isDirectory())) {
-            return dir.mkdirs();
+
+            boolean created = dir.mkdirs();
+            if (created) {
+                System.out.println("Created directory: " + dir.getName());
+            }
+            return created;
         } else if (dir.exists() && dir.isDirectory()) {
             return true;
         }
@@ -21,11 +35,11 @@ public abstract class FileUtils {
      * @return path to the last created directory
      */
     public static File createSubDirs(String... dirs) {
-
+        System.out.println("Checking directories");
         File dir = null;
         for (String childName : dirs) {
             dir = new File(dir, childName);
-            if (!createDirctory(dir)) {
+            if (!createDirectory(dir)) {
                 return dir;
             }
         }

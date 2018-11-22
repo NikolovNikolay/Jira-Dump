@@ -1,4 +1,4 @@
-package com.nnikolov.jiradump;
+package com.nnikolov.jiradump.model.abs;
 
 public interface HasIcon {
 

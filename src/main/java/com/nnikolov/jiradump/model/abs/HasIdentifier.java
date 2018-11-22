@@ -1,4 +1,4 @@
-package com.nnikolov.jiradump.model;
+package com.nnikolov.jiradump.model.abs;
 
 /**
  * Marks an entity as such having information that can be

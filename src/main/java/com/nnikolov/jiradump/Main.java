@@ -1,34 +1,36 @@
 package com.nnikolov.jiradump;
 
-import com.google.gson.Gson;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.nnikolov.jiradump.model.Issue;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.nnikolov.jiradump.env.EnvironmentConfiguration;
+import com.nnikolov.jiradump.guice.XmlIssueDumpModule;
 import com.nnikolov.jiradump.model.JiraFilterResult;
-import com.nnikolov.jiradump.writers.JsonFileWriter;
+import com.nnikolov.jiradump.service.PersistenceService;
 
+import static com.nnikolov.jiradump.ErrorMessages.CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED;
+
+/**
+ * Downloads JIRA issues to json or xml files, depending on
+ * user preferences
+ */
 public class Main {
 
     public static void main(String[] args) {
 
+        Injector diInjector = Guice.createInjector(new XmlIssueDumpModule());
+        PersistenceService persistenceService = diInjector.getInstance(PersistenceService.class);
+        EnvironmentConfiguration env = diInjector.getInstance(EnvironmentConfiguration.class);
+
+        JiraFilterResult filterResult;
         try {
-            Gson g = new Gson();
-
-            HttpResponse<String> response = Unirest.get(EnvConfig.get().getIssueTypeFilteredIssuesUrl(0, 50)).asString();
-            JiraFilterResult re = g.fromJson(response.getBody(), JiraFilterResult.class);
-
-            HttpResponse<String> response2 = Unirest.get(re.getIssues().get(0).getSelf()).asString();
-
-            Issue is = g.fromJson(response2.getBody(), Issue.class);
-            is.buildUrl(EnvConfig.get().getWebBrowseBaseUrl());
-
-            EnvConfig env = EnvConfig.get();
-            JsonFileWriter jsonFileWriter = new JsonFileWriter(env.getOutputRoot(), env.getBaseOutputDirName(), env.getJsonOutputDirName());
-            jsonFileWriter.write(is.getKey(), is);
-
-        } catch (UnirestException e) {
+            System.out.println("Fetching initial page of filtered issues...");
+            filterResult = persistenceService.getAsEntity(JiraFilterResult.class, env.getIssueTypeFilteredIssuesUrl());
+            System.out.println(filterResult.getTotal() + " issues fetched from cloud server");
+        } catch (Exception e) {
+            System.out.println(CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED);
             e.printStackTrace();
+            return;
         }
+        persistenceService.persistEntities(filterResult);
     }
 }

@@ -1,12 +1,19 @@
 package com.nnikolov.jiradump.model;
 
+import com.nnikolov.jiradump.model.abs.HasIdentifier;
+
+import javax.xml.bind.annotation.XmlAttribute;
+
 /**
  * A basic JIRA entity that has identifier and is reused in
  * other entities context
  */
 public abstract class BaseJiraEntity implements HasIdentifier {
 
+    @XmlAttribute
     private String id;
+
+    @XmlAttribute
     private String self;
 
     /**

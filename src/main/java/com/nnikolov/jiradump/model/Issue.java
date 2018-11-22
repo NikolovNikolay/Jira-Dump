@@ -1,8 +1,12 @@
 package com.nnikolov.jiradump.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Representing an issue in the JIRA Platform
  */
+@XmlRootElement
 public class Issue extends IssueMeta {
 
     private String url;
@@ -18,10 +22,12 @@ public class Issue extends IssueMeta {
         return this;
     }
 
+    @XmlElement
     public String getUrl() {
         return url;
     }
 
+    @XmlElement
     public IssueFields getFields() {
         return fields;
     }

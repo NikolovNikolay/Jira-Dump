@@ -1,5 +1,7 @@
 package com.nnikolov.jiradump.model;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Base information of an user in the JIRA platform
  */
@@ -13,6 +15,7 @@ public abstract class BaseUser {
     /**
      * @return username of a user
      */
+    @XmlElement
     public String getName() {
         return name;
     }

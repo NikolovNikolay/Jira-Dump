@@ -1,5 +1,7 @@
 package com.nnikolov.jiradump.model;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Detailed information for a comment
  */
@@ -11,6 +13,7 @@ public class CommentDetails {
     public CommentDetails() {
     }
 
+    @XmlElement
     public CommentAuthor getAuthor() {
         return author;
     }
@@ -18,6 +21,7 @@ public class CommentDetails {
     /**
      * @return text body of the comment
      */
+    @XmlElement
     public String getBody() {
         return body;
     }
