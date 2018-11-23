@@ -1,9 +1,8 @@
 package com.nnikolov.jiradump;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.nnikolov.jiradump.env.EnvironmentConfiguration;
-import com.nnikolov.jiradump.guice.JsonIssueDumpModule;
+import com.nnikolov.jiradump.guice.InjectorSerivce;
 import com.nnikolov.jiradump.model.JiraFilterResult;
 import com.nnikolov.jiradump.service.PersistenceService;
 
@@ -17,7 +16,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Injector diInjector = Guice.createInjector(new JsonIssueDumpModule());
+        ArgProcessor argumentProcessor = new ArgumentProcessor(args);
+        InjectorSerivce injectorSerivce = new InjectorSerivce(argumentProcessor);
+        Injector diInjector = injectorSerivce.produceInjector();
+        if (diInjector == null) {
+            // TODO: throw custom
+        }
+
         PersistenceService persistenceService = diInjector.getInstance(PersistenceService.class);
         EnvironmentConfiguration env = diInjector.getInstance(EnvironmentConfiguration.class);
 
