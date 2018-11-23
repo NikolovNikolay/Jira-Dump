@@ -3,7 +3,6 @@ package com.nnikolov.jiradump;
 import static com.nnikolov.jiradump.OutputType.JSON;
 import static com.nnikolov.jiradump.OutputType.XML;
 
-
 public class ArgumentProcessor implements ArgProcessor {
 
     private String[] arguments;
@@ -12,7 +11,7 @@ public class ArgumentProcessor implements ArgProcessor {
         this.arguments = arguments;
     }
 
-    public OutputType resolveOutputType() {
+    public OutputType resolveOutputType() throws NoOutputTypeDefinedException {
         if (arguments != null) {
             for (String argument : arguments) {
                 if (argument.toUpperCase().equals(JSON.name())) {
@@ -23,6 +22,6 @@ public class ArgumentProcessor implements ArgProcessor {
                 }
             }
         }
-        return null;
+        throw new NoOutputTypeDefinedException();
     }
 }

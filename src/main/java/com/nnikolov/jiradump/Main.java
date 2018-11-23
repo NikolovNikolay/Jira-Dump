@@ -2,7 +2,7 @@ package com.nnikolov.jiradump;
 
 import com.google.inject.Injector;
 import com.nnikolov.jiradump.env.EnvironmentConfiguration;
-import com.nnikolov.jiradump.guice.InjectorSerivce;
+import com.nnikolov.jiradump.guice.InjectorService;
 import com.nnikolov.jiradump.model.JiraFilterResult;
 import com.nnikolov.jiradump.service.PersistenceService;
 
@@ -17,11 +17,8 @@ public class Main {
     public static void main(String[] args) {
 
         ArgProcessor argumentProcessor = new ArgumentProcessor(args);
-        InjectorSerivce injectorSerivce = new InjectorSerivce(argumentProcessor);
-        Injector diInjector = injectorSerivce.produceInjector();
-        if (diInjector == null) {
-            // TODO: throw custom
-        }
+        InjectorService injectorService = new InjectorService(argumentProcessor);
+        Injector diInjector = injectorService.produceInjector();
 
         PersistenceService persistenceService = diInjector.getInstance(PersistenceService.class);
         EnvironmentConfiguration env = diInjector.getInstance(EnvironmentConfiguration.class);

@@ -2,5 +2,5 @@ package com.nnikolov.jiradump;
 
 public interface ArgProcessor {
 
-    OutputType resolveOutputType();
+    OutputType resolveOutputType() throws NoOutputTypeDefinedException;
 }

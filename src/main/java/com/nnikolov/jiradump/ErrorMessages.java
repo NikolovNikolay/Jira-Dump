@@ -12,4 +12,5 @@ public class ErrorMessages {
     public static final String CODE_3002_FETCH_ISSUE_CALL_FAILED = "[30002] Fetching issue call failed";
     public static final String CODE_3003_FETCH_ISSUE_CALL_FAILED = "[30003] Could not get next page of issues. Aborting...";
     public static final String CODE_3004_PARSE_ISSUE_FAILED = "[30004] Could not parse fetched issue";
+    public static final String NO_OUTPUT_TYPE_DEFINED_DEFAULT = "There was no provided output type as argument";
 }
