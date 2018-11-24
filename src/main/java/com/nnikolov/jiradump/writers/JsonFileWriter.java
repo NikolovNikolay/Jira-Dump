@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 
-import static com.nnikolov.jiradump.ErrorMessages.CODE_20001_COULD_NOT_WRITE_JSON_FILE;
+import static com.nnikolov.jiradump.exception.ExceptionMessages.CODE_20001_COULD_NOT_WRITE_JSON_FILE;
 
 /**
  * Writes object to file as a prettified json.
@@ -21,10 +21,11 @@ public class JsonFileWriter implements Writer {
 
     private final File writePath;
     private final ObjectWriter writer;
+    private final String outputDir;
 
     @Inject
     public JsonFileWriter(EnvironmentConfiguration environmentConfiguration) {
-        String outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
+        this.outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
         this.writePath = FileUtils.createSubDirs(outputDir, environmentConfiguration.getOutputDirName());
         ObjectMapper mapper = new ObjectMapper();
         this.writer = mapper.writerWithDefaultPrettyPrinter();
@@ -32,13 +33,25 @@ public class JsonFileWriter implements Writer {
     }
 
     @Override
-    public void write(String fileName, Class<?> contentType, Object content) {
-
+    public File write(String fileName, Class<?> contentType, Object content) {
         try {
-            writer.writeValue(new File(writePath, fileName + EXTENSION), content);
+            File toWrite = new File(writePath, fileName + getExtension());
+            writer.writeValue(toWrite, content);
+            return toWrite;
         } catch (IOException e) {
             System.out.println(String.format(CODE_20001_COULD_NOT_WRITE_JSON_FILE, fileName));
             e.printStackTrace();
+            return null;
         }
+    }
+
+    @Override
+    public String getExtension() {
+        return EXTENSION;
+    }
+
+    @Override
+    public String getOutputDirPath() {
+        return outputDir;
     }
 }

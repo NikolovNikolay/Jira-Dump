@@ -10,6 +10,9 @@ import com.nnikolov.jiradump.utils.IssuePersistenceProgressPrinter;
 import com.nnikolov.jiradump.writers.Writer;
 import com.nnikolov.jiradump.writers.XmlFileWriter;
 
+/**
+ * Guise module for when persisting json files
+ */
 public class XmlIssueDumpModule extends AbstractModule {
     @Override
     protected void configure() {

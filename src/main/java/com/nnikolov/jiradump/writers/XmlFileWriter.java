@@ -17,16 +17,17 @@ public class XmlFileWriter implements Writer {
 
     private final static String EXTENSION = ".xml";
     private final File writePath;
+    private final String outputDir;
 
     @Inject
     public XmlFileWriter(EnvironmentConfiguration environmentConfiguration) {
-        String outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
+        this.outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
         this.writePath = FileUtils.createSubDirs(outputDir, environmentConfiguration.getOutputDirName());
         System.out.println("Initializing xml file writer");
     }
 
     @Override
-    public void write(String fileName, Class<?> contentType, Object content) {
+    public File write(String fileName, Class<?> contentType, Object content) {
         try {
             JAXBContext context = JAXBContext.newInstance(contentType);
             Marshaller marshaller = context.createMarshaller();
@@ -35,15 +36,28 @@ public class XmlFileWriter implements Writer {
             StringWriter sw = new StringWriter();
             marshaller.marshal(content, sw);
             String xmlString = sw.toString();
-            File newIssue = new File(writePath, fileName + EXTENSION);
+            File newIssue = new File(writePath, fileName + getExtension());
 
             try (OutputStream outputStream = new FileOutputStream(newIssue)) {
                 outputStream.write(xmlString.getBytes());
+                return newIssue;
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             }
         } catch (JAXBException e) {
             e.printStackTrace();
+            return null;
         }
+    }
+
+    @Override
+    public String getExtension() {
+        return EXTENSION;
+    }
+
+    @Override
+    public String getOutputDirPath() {
+        return outputDir;
     }
 }

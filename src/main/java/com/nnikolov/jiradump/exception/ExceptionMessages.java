@@ -1,6 +1,6 @@
-package com.nnikolov.jiradump;
+package com.nnikolov.jiradump.exception;
 
-public class ErrorMessages {
+public class ExceptionMessages {
 
     public static final String CODE_10001_NO_GRADLE_FILE_CONFIG = "[10001] Could not find gradle properties file to build environment configuration: %s";
     public static final String CODE_10002_CANT_LOAD_GRADLE_PROPS = "[10002] Could not load gradle properties as configuration";
@@ -13,4 +13,5 @@ public class ErrorMessages {
     public static final String CODE_3003_FETCH_ISSUE_CALL_FAILED = "[30003] Could not get next page of issues. Aborting...";
     public static final String CODE_3004_PARSE_ISSUE_FAILED = "[30004] Could not parse fetched issue";
     public static final String NO_OUTPUT_TYPE_DEFINED_DEFAULT = "There was no provided output type as argument";
+    public static final String INJECTOR_SERVICE_ALREADY_INITIALIZED_DEFAULT = "Injector service was already initialized";
 }

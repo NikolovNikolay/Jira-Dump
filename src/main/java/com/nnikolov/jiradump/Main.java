@@ -3,21 +3,22 @@ package com.nnikolov.jiradump;
 import com.google.inject.Injector;
 import com.nnikolov.jiradump.env.EnvironmentConfiguration;
 import com.nnikolov.jiradump.guice.InjectorService;
+import com.nnikolov.jiradump.guice.InjectorServiceImpl;
 import com.nnikolov.jiradump.model.JiraFilterResult;
 import com.nnikolov.jiradump.service.PersistenceService;
 
-import static com.nnikolov.jiradump.ErrorMessages.CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED;
+import static com.nnikolov.jiradump.exception.ExceptionMessages.CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED;
 
 /**
- * Downloads JIRA issues to json or xml files, depending on
- * user preferences
+ * Initializes application components and initiates download
+ * of the available jira issues from the start of the week
  */
 public class Main {
 
     public static void main(String[] args) {
 
         ArgProcessor argumentProcessor = new ArgumentProcessor(args);
-        InjectorService injectorService = new InjectorService(argumentProcessor);
+        InjectorService injectorService = InjectorServiceImpl.initAndGetInstance(argumentProcessor);
         Injector diInjector = injectorService.produceInjector();
 
         PersistenceService persistenceService = diInjector.getInstance(PersistenceService.class);

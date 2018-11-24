@@ -52,4 +52,32 @@ public class IssueFields {
     public Comment getComment() {
         return comment;
     }
+
+    public void setIssuetype(IssueType issuetype) {
+        this.issuetype = issuetype;
+    }
+
+    public void setPriority(IssuePriority priority) {
+        this.priority = priority;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setReporter(Reporter reporter) {
+        this.reporter = reporter;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
 }

@@ -12,7 +12,7 @@ import com.nnikolov.jiradump.model.JiraFilterResult;
 import com.nnikolov.jiradump.utils.IssuePersistenceProgressPrinter;
 import com.nnikolov.jiradump.writers.Writer;
 
-import static com.nnikolov.jiradump.ErrorMessages.*;
+import static com.nnikolov.jiradump.exception.ExceptionMessages.*;
 
 /**
  * Takes care of fetching issues and persisting them in files.

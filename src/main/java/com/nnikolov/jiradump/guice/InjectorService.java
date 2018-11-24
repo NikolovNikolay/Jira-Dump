@@ -1,33 +1,22 @@
 package com.nnikolov.jiradump.guice;
 
-import com.google.inject.Guice;
+import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
-import com.nnikolov.jiradump.ArgProcessor;
-import com.nnikolov.jiradump.NoOutputTypeDefinedException;
-import com.nnikolov.jiradump.OutputType;
 
-public class InjectorService {
 
-    private ArgProcessor argumentProcessor;
+public interface InjectorService {
 
-    public InjectorService(ArgProcessor argumentProcessor) {
-        this.argumentProcessor = argumentProcessor;
-    }
+    /**
+     * Builder method for constructing a Guice injector
+     *
+     * @return Guice injector
+     */
+    Injector produceInjector();
 
-    public Injector produceInjector() {
-        try {
-            OutputType outputType = argumentProcessor.resolveOutputType();
-            switch (outputType) {
-                case JSON:
-                    return Guice.createInjector(new JsonIssueDumpModule());
-                case XML:
-                default:
-                    return Guice.createInjector(new XmlIssueDumpModule());
-            }
-        } catch (NoOutputTypeDefinedException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Preparing default xml output");
-            return Guice.createInjector(new XmlIssueDumpModule());
-        }
-    }
+    /**
+     * Factory method for providing a Guice module
+     *
+     * @return Guice module
+     */
+    AbstractModule produceModule();
 }

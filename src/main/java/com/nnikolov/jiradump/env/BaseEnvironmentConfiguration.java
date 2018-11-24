@@ -1,6 +1,5 @@
 package com.nnikolov.jiradump.env;
 
-import com.nnikolov.jiradump.RuntimeConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,17 +22,6 @@ public abstract class BaseEnvironmentConfiguration implements EnvironmentConfigu
     Properties properties;
 
     BaseEnvironmentConfiguration() {
-//        try {
-//            properties = new Properties();
-//            InputStream gradleInput = new FileInputStream(NAME_GRADLE_PROPERTIES);
-//            properties.load(gradleInput);
-//        } catch (FileNotFoundException e) {
-//            logger.error(String.format(CODE_10001_NO_GRADLE_FILE_CONFIG, NAME_GRADLE_PROPERTIES));
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            logger.error(CODE_10002_CANT_LOAD_GRADLE_PROPS);
-//        }
     }
 
     public String getLatestApiUrl() {

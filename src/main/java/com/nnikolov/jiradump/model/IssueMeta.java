@@ -3,7 +3,7 @@ package com.nnikolov.jiradump.model;
 import com.nnikolov.jiradump.model.abs.HasIdentifier;
 import com.nnikolov.jiradump.model.abs.HasKey;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Meta-information about a JIRA issue, so it can be easily identified and
@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlAttribute;
  */
 public class IssueMeta extends BaseJiraEntity implements HasKey {
 
+    @XmlElement
     private String key;
 
     public IssueMeta() {
     }
 
-    @XmlAttribute
     @Override
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setPropKey(String key) {
         this.key = key;
     }
 }
