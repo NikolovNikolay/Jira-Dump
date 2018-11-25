@@ -30,4 +30,3 @@ depending on user preference. If no preference is available the application will
    - Run `java -jar .\jira-dump-1.0.0.jar xml|json` command in terminal. This will output issues in `xml` **or** `json`, not both.  
    If no argument is passed (`xml` or `json`) the application will use `json` by default. It will run until all issues are downloaded. `Ctrl + c` 
    will interrupt the execution.
-   
