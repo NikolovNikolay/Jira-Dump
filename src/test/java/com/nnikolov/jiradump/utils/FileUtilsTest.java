@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static com.nnikolov.jiradump.utils.FileUtils.createSubDirs;
+import static com.nnikolov.jiradump.utils.FileUtils.createSubDirectories;
 
 public class FileUtilsTest {
 
     @Test
     public void testCreateSubDirectories() {
-        createSubDirs("outerDirectory", "innerDirectory");
+        createSubDirectories("outerDirectory", "innerDirectory");
 
         File outer = new File("outerDirectory");
         Assert.assertTrue(outer.exists() && outer.isDirectory());

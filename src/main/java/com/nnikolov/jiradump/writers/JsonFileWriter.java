@@ -26,7 +26,7 @@ public class JsonFileWriter implements Writer {
     @Inject
     public JsonFileWriter(EnvironmentConfiguration environmentConfiguration) {
         this.outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
-        this.writePath = FileUtils.createSubDirs(outputDir, environmentConfiguration.getOutputDirName());
+        this.writePath = FileUtils.createSubDirectories(outputDir, environmentConfiguration.getOutputDirName());
         ObjectMapper mapper = new ObjectMapper();
         this.writer = mapper.writerWithDefaultPrettyPrinter();
         System.out.println("Initializing json file writer");

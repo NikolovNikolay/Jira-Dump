@@ -3,7 +3,7 @@ package com.nnikolov.jiradump.model;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * Base information of an user in the JIRA platform
+ * Base information of an user in the Atlassian platform
  */
 public abstract class BaseUser {
 

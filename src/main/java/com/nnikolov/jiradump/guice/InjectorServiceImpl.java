@@ -9,8 +9,8 @@ import com.nnikolov.jiradump.exception.InjectorServiceAlreadyInitializedExceptio
 import com.nnikolov.jiradump.exception.NoOutputTypeDefinedException;
 
 /**
- * Wrapper over Guice injector that manages and produces Guice
- * components
+ * Wrapper over Guice injector that manages and produces
+ * Guice components
  */
 public class InjectorServiceImpl implements InjectorService {
 

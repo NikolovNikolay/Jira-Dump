@@ -11,7 +11,7 @@ import com.nnikolov.jiradump.writers.JsonFileWriter;
 import com.nnikolov.jiradump.writers.Writer;
 
 /**
- * Guise module for when persisting json files
+ * Guise module with components required for persisting json files
  */
 public class JsonIssueDumpModule extends AbstractModule {
     @Override

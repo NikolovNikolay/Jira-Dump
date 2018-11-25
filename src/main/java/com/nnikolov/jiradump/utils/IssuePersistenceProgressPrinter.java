@@ -1,5 +1,8 @@
 package com.nnikolov.jiradump.utils;
 
+/**
+ * Prints messages about issue persist process progress
+ */
 public class IssuePersistenceProgressPrinter {
 
     public void printNextPage() {

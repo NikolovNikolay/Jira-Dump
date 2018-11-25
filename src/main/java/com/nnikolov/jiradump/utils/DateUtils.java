@@ -13,7 +13,7 @@ public abstract class DateUtils {
 
     /**
      * Stringifies a timestamp that is the start of the current week.
-     * Blanks and columns are replaces for compatibility
+     * Blanks and columns are replaces for environment compatibility
      *
      * @return stringified timestamp
      */
@@ -26,6 +26,8 @@ public abstract class DateUtils {
         cal.clear(Calendar.SECOND);
         cal.clear(Calendar.MILLISECOND);
 
-        return new Date(cal.getTimeInMillis()).toString().replaceAll(" ", "_").replaceAll(":", "-");
+        return new Date(cal.getTimeInMillis()).toString()
+                .replaceAll(" ", "_")
+                .replaceAll(":", "-");
     }
 }

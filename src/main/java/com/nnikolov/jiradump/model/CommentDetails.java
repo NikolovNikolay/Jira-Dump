@@ -13,6 +13,9 @@ public class CommentDetails {
     public CommentDetails() {
     }
 
+    /**
+     * @return author of an issue
+     */
     @XmlElement
     public CommentAuthor getAuthor() {
         return author;

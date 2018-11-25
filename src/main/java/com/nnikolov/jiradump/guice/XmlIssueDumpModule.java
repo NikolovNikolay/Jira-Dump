@@ -11,7 +11,7 @@ import com.nnikolov.jiradump.writers.Writer;
 import com.nnikolov.jiradump.writers.XmlFileWriter;
 
 /**
- * Guise module for when persisting json files
+ * Guise module with components required for persisting xml files
  */
 public class XmlIssueDumpModule extends AbstractModule {
     @Override

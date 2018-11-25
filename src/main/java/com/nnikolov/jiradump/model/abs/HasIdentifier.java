@@ -7,12 +7,12 @@ package com.nnikolov.jiradump.model.abs;
 public interface HasIdentifier {
 
     /**
-     * @return The id of the record from the JIRA Cloud Platform DB
+     * @return the id of the record from the public Atlassian cloud platform
      */
     String getId();
 
     /**
-     * @return Link to detailed issue information from the JIRA Cloud API
+     * @return link to detailed issue information from from the public Atlassian cloud platform
      */
     String getSelf();
 }

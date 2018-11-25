@@ -1,7 +1,7 @@
 package com.nnikolov.jiradump.env;
 
 /**
- * Information for persisting json files
+ * Configuration source when persisting json files
  */
 public final class JsonEnvironmentConfiguration extends BaseEnvironmentConfiguration {
 

@@ -4,7 +4,7 @@ package com.nnikolov.jiradump.env;
  * Information to help persistence process - prepared API call
  * URLs and folder paths and names
  */
-public interface EnvironmentConfiguration extends ApiInfoHolder {
+public interface EnvironmentConfiguration extends ApiInfo {
 
     /**
      * @return absolute path to root directory. By default the root is
@@ -13,12 +13,12 @@ public interface EnvironmentConfiguration extends ApiInfoHolder {
     String getOutputRoot();
 
     /**
-     * @return content directory name in the direct root
+     * @return content directory name within the root
      */
     String getBaseOutputDirName();
 
     /**
-     * @return folder to hold the persisted files
+     * @return folder name to persist the downloaded files
      */
     String getOutputDirName();
 }

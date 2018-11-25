@@ -6,7 +6,7 @@ package com.nnikolov.jiradump.model.abs;
 public interface HasKey {
 
     /**
-     * @return alias key from JIRA Cloud API
+     * @return alias key from Atlassian public server
      */
     String getKey();
 }

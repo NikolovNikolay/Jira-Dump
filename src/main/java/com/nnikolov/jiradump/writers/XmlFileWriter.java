@@ -22,7 +22,7 @@ public class XmlFileWriter implements Writer {
     @Inject
     public XmlFileWriter(EnvironmentConfiguration environmentConfiguration) {
         this.outputDir = environmentConfiguration.getBaseOutputDirName() + ("_" + DateUtils.stringifyStartOfWeek());
-        this.writePath = FileUtils.createSubDirs(outputDir, environmentConfiguration.getOutputDirName());
+        this.writePath = FileUtils.createSubDirectories(outputDir, environmentConfiguration.getOutputDirName());
         System.out.println("Initializing xml file writer");
     }
 

@@ -11,7 +11,7 @@ import static com.nnikolov.jiradump.exception.ExceptionMessages.CODE_3001_INTERR
 
 /**
  * Initializes application components and initiates download
- * of the available jira issues from the start of the week
+ * of the available jira issues
  */
 public class Main {
 
@@ -27,7 +27,7 @@ public class Main {
         JiraFilterResult filterResult;
         try {
             System.out.println("Fetching initial page of filtered issues...");
-            filterResult = persistenceService.getAsEntity(JiraFilterResult.class, env.getIssueTypeFilteredIssuesUrl());
+            filterResult = persistenceService.getAsEntity(JiraFilterResult.class, env.getFilteredIssuesUrl());
             System.out.println(filterResult.getTotal() + " issues fetched from cloud server");
         } catch (Exception e) {
             System.out.println(CODE_3001_INTERRUPT_ISSUES_DUMP_UNEXPECTED);

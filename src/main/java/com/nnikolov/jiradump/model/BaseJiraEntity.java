@@ -5,7 +5,7 @@ import com.nnikolov.jiradump.model.abs.HasIdentifier;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * A basic JIRA entity that has identifier and is reused in
+ * A basic Atlassian entity that has identifier and is reused in
  * other entities context
  */
 public abstract class BaseJiraEntity implements HasIdentifier {
@@ -17,7 +17,7 @@ public abstract class BaseJiraEntity implements HasIdentifier {
     private String self;
 
     /**
-     * @return Id of the specific entity in the JIRA Cloud Platform DB
+     * @return id of the specific entity in the Atlassian public server
      */
     @Override
     public String getId() {
@@ -25,7 +25,7 @@ public abstract class BaseJiraEntity implements HasIdentifier {
     }
 
     /**
-     * @return URI reference to the resource via the JIRA Cloud Platform API
+     * @return URI reference to the resource via the Atlassian public server
      */
     @Override
     public String getSelf() {

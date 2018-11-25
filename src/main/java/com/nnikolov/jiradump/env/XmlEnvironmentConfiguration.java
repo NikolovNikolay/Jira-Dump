@@ -1,9 +1,12 @@
 package com.nnikolov.jiradump.env;
 
+/**
+ * Configuration source when persisting xml files
+ */
 public class XmlEnvironmentConfiguration extends BaseEnvironmentConfiguration {
 
     public XmlEnvironmentConfiguration() {
-        System.out.println("Initializing json persistence environment configuration");
+        System.out.println("Initializing xml persistence environment configuration");
     }
 
     public String getBaseOutputDirName() {

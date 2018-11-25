@@ -6,8 +6,7 @@ import com.nnikolov.jiradump.model.IssueType;
 
 import java.util.Random;
 
-import static com.nnikolov.jiradump.utils.StringUtils.getRandomLengthString;
-import static com.nnikolov.jiradump.utils.StringUtils.getSafeString;
+import static com.nnikolov.jiradump.utils.StringUtils.getRandomContentString;
 
 public class EntityHelper {
 
@@ -27,20 +26,20 @@ public class EntityHelper {
 
     static Issue buildIssue() {
         Issue issue = new Issue();
-        issue.setPropKey(getSafeString(5));
-        issue.setParamUrl(getRandomLengthString());
-        issue.setParamId(getRandomLengthString());
-        issue.setParamSelf(getRandomLengthString());
+        issue.setPropKey(getRandomContentString(5));
+        issue.setParamUrl(getRandomContentString(null));
+        issue.setParamId(getRandomContentString(null));
+        issue.setParamSelf(getRandomContentString(0));
         return issue;
     }
 
     static IssueType buildIssueType() {
         IssueType issueType = new IssueType();
-        issueType.setPropDescription(getRandomLengthString());
-        issueType.setPropName(getRandomLengthString());
-        issueType.setParamId(getRandomLengthString());
-        issueType.setParamSelf(getRandomLengthString());
-        issueType.setPropIconUrl(getRandomLengthString());
+        issueType.setPropDescription(getRandomContentString(null));
+        issueType.setPropName(getRandomContentString(null));
+        issueType.setParamId(getRandomContentString(0));
+        issueType.setParamSelf(getRandomContentString(null));
+        issueType.setPropIconUrl(getRandomContentString(null));
         issueType.setPropSubTask(false);
         issueType.setPropAvatarId(new Random().nextLong());
         return issueType;
@@ -48,10 +47,10 @@ public class EntityHelper {
 
     static IssuePriority buildIssuePriority() {
         IssuePriority priority = new IssuePriority();
-        priority.setPropIconUrl(getRandomLengthString());
-        priority.setPropName(getRandomLengthString());
-        priority.setParamId(getRandomLengthString());
-        priority.setParamSelf(getRandomLengthString());
+        priority.setPropIconUrl(getRandomContentString(null));
+        priority.setPropName(getRandomContentString(null));
+        priority.setParamId(getRandomContentString(0));
+        priority.setParamSelf(getRandomContentString(null));
         return priority;
     }
 }

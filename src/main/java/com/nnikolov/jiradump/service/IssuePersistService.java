@@ -19,7 +19,6 @@ import static com.nnikolov.jiradump.exception.ExceptionMessages.*;
  */
 public class IssuePersistService implements PersistenceService {
 
-    private HttpResponse<String> response;
     private EnvironmentConfiguration env;
     private Writer writer;
     private IssuePersistenceProgressPrinter printer;
@@ -40,7 +39,7 @@ public class IssuePersistService implements PersistenceService {
 
     @Override
     public <T> T getAsEntity(Class<T> clazz, String url) throws UnirestException {
-        response = Unirest.get(url).asString();
+        HttpResponse<String> response = Unirest.get(url).asString();
         return gson.fromJson(response.getBody(), clazz);
     }
 
@@ -80,7 +79,7 @@ public class IssuePersistService implements PersistenceService {
             } else {
                 try {
                     printer.printNextPage();
-                    filterResult = getAsEntity(JiraFilterResult.class, env.getIssueTypeFilteredIssuesUrl(startAt, maxResult));
+                    filterResult = getAsEntity(JiraFilterResult.class, env.getFilteredIssuesUrl(startAt, maxResult));
                 } catch (UnirestException e) {
                     System.out.println(CODE_3003_FETCH_ISSUE_CALL_FAILED);
                     e.printStackTrace();

@@ -34,7 +34,7 @@ public abstract class FileUtils {
      * @param dirs directory names
      * @return path to the last created directory
      */
-    public static File createSubDirs(String... dirs) {
+    public static File createSubDirectories(String... dirs) {
         System.out.println("Checking directories");
         File dir = null;
         for (String childName : dirs) {
@@ -45,5 +45,4 @@ public abstract class FileUtils {
         }
         return dir;
     }
-
 }
