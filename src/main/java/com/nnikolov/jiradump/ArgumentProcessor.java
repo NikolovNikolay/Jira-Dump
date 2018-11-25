@@ -27,8 +27,7 @@ public class ArgumentProcessor implements ArgProcessor {
             for (String argument : arguments) {
                 if (argument.toUpperCase().equals(JSON.name())) {
                     return JSON;
-                }
-                if (argument.toUpperCase().equals(XML.name())) {
+                } else if (argument.toUpperCase().equals(XML.name())) {
                     return XML;
                 }
             }

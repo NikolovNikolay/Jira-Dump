@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Issue</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nnikolov.jiradump.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Issue (com.nnikolov.jiradump.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Issue</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    62.5%
+  </span>
+  <span class="absValue">
+    (5/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70.6%
+  </span>
+  <span class="absValue">
+    (12/ 17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nnikolov.jiradump.model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import javax.xml.bind.annotation.XmlElement;
+<i>4</i>&nbsp;import javax.xml.bind.annotation.XmlRootElement;
+<i>5</i>&nbsp;import java.util.Objects;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * Representing an issue in the JIRA Platform
+<i>9</i>&nbsp; */
+<i>10</i>&nbsp;@XmlRootElement
+<b class="fc"><i>11</i>&nbsp;public class Issue extends IssueMeta {</b>
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    @XmlElement
+<i>14</i>&nbsp;    private String url;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    @XmlElement
+<i>17</i>&nbsp;    private IssueFields fields;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * Builds a link that can be opened in browser
+<i>21</i>&nbsp;     *
+<i>22</i>&nbsp;     * @param browseUrl url for review
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    public Issue buildUrl(String browseUrl) {
+<b class="nc"><i>25</i>&nbsp;        url = browseUrl + getKey();</b>
+<b class="nc"><i>26</i>&nbsp;        return this;</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public String getUrl() {
+<b class="fc"><i>30</i>&nbsp;        return url;</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public IssueFields getFields() {
+<b class="fc"><i>34</i>&nbsp;        return fields;</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public void setParamUrl(String url) {
+<b class="fc"><i>38</i>&nbsp;        this.url = url;</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    public void setParamFields(IssueFields fields) {
+<b class="nc"><i>42</i>&nbsp;        this.fields = fields;</b>
+<b class="nc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    @Override
+<i>46</i>&nbsp;    public boolean equals(Object o) {
+<b class="fc"><i>47</i>&nbsp;        if (this == o) return true;</b>
+<b class="fc"><i>48</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc"><i>49</i>&nbsp;        Issue issue = (Issue) o;</b>
+<b class="fc"><i>50</i>&nbsp;        return url.equals(issue.url) &amp;&amp;</b>
+<b class="fc"><i>51</i>&nbsp;                getKey().equals(issue.getKey()) &amp;&amp;</b>
+<b class="fc"><i>52</i>&nbsp;                getSelf().equals(issue.getSelf()) &amp;&amp;</b>
+<b class="fc"><i>53</i>&nbsp;                getId().equals(issue.getId());</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    @Override
+<i>57</i>&nbsp;    public int hashCode() {
+<b class="nc"><i>58</i>&nbsp;        return Objects.hash(url, fields, getId(), getKey(), getSelf());</b>
+<i>59</i>&nbsp;    }
+<i>60</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-11-25 13:33</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: JsonEnvironmentConfiguration</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nnikolov.jiradump.env</a> ]
+</div>
+
+<h1>Coverage Summary for Class: JsonEnvironmentConfiguration (com.nnikolov.jiradump.env)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JsonEnvironmentConfiguration</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">JsonEnvironmentConfiguration$$FastClassByGuice$$1c759fd</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nnikolov.jiradump.env;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Configuration source when persisting json files
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;public final class JsonEnvironmentConfiguration extends BaseEnvironmentConfiguration {
+<i>7</i>&nbsp;
+<b class="fc"><i>8</i>&nbsp;    public JsonEnvironmentConfiguration() {</b>
+<b class="fc"><i>9</i>&nbsp;        System.out.println(&quot;Initializing json persistence environment configuration&quot;);</b>
+<b class="fc"><i>10</i>&nbsp;    }</b>
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    public String getBaseOutputDirName() {
+<b class="fc"><i>13</i>&nbsp;        return RuntimeConstants.BASE_OUTPUT_DIR_NAME;</b>
+<i>14</i>&nbsp;    }
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    public String getOutputDirName() {
+<b class="fc"><i>17</i>&nbsp;        return RuntimeConstants.JSON_OUTPUT_DIR_NAME;</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public String getOutputRoot() {
+<b class="nc"><i>21</i>&nbsp;        return RuntimeConstants.OUTPUT_ROOT;</b>
+<i>22</i>&nbsp;    }
+<i>23</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-11-25 13:33</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: InjectorServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nnikolov.jiradump.guice</a> ]
+</div>
+
+<h1>Coverage Summary for Class: InjectorServiceImpl (com.nnikolov.jiradump.guice)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InjectorServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73.9%
+  </span>
+  <span class="absValue">
+    (17/ 23)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">InjectorServiceImpl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (4/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (18/ 24)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nnikolov.jiradump.guice;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.google.inject.AbstractModule;
+<i>4</i>&nbsp;import com.google.inject.Guice;
+<i>5</i>&nbsp;import com.google.inject.Injector;
+<i>6</i>&nbsp;import com.nnikolov.jiradump.ArgProcessor;
+<i>7</i>&nbsp;import com.nnikolov.jiradump.enums.OutputType;
+<i>8</i>&nbsp;import com.nnikolov.jiradump.exception.InjectorServiceAlreadyInitializedException;
+<i>9</i>&nbsp;import com.nnikolov.jiradump.exception.NoOutputTypeDefinedException;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * Wrapper over Guice injector that manages and produces
+<i>13</i>&nbsp; * Guice components
+<i>14</i>&nbsp; */
+<i>15</i>&nbsp;public class InjectorServiceImpl implements InjectorService {
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    private static InjectorService instance;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public static InjectorService getInstance() {
+<b class="nc"><i>20</i>&nbsp;        return instance;</b>
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public static InjectorService initAndGetInstance(ArgProcessor argumentProcessor) {
+<b class="nc"><i>24</i>&nbsp;        if (instance != null) {</b>
+<b class="nc"><i>25</i>&nbsp;            throw new InjectorServiceAlreadyInitializedException();</b>
+<i>26</i>&nbsp;        }
+<b class="nc"><i>27</i>&nbsp;        instance = new InjectorServiceImpl(argumentProcessor);</b>
+<b class="nc"><i>28</i>&nbsp;        return instance;</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    private ArgProcessor argumentProcessor;
+<i>32</i>&nbsp;
+<b class="fc"><i>33</i>&nbsp;    private InjectorServiceImpl(ArgProcessor argumentProcessor) {</b>
+<b class="fc"><i>34</i>&nbsp;        this.argumentProcessor = argumentProcessor;</b>
+<b class="fc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public Injector produceInjector() {
+<i>38</i>&nbsp;
+<b class="fc"><i>39</i>&nbsp;        AbstractModule module = produceModule();</b>
+<b class="fc"><i>40</i>&nbsp;        if (module == null) {</b>
+<b class="nc"><i>41</i>&nbsp;            return null;</b>
+<i>42</i>&nbsp;        }
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;        return Guice.createInjector(module);</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    public AbstractModule produceModule() {
+<i>48</i>&nbsp;        try {
+<b class="fc"><i>49</i>&nbsp;            OutputType outputType = argumentProcessor.resolveOutputType();</b>
+<b class="fc"><i>50</i>&nbsp;            switch (outputType) {</b>
+<i>51</i>&nbsp;                case XML:
+<b class="fc"><i>52</i>&nbsp;                    return new XmlIssueDumpModule();</b>
+<i>53</i>&nbsp;                case JSON:
+<i>54</i>&nbsp;                default:
+<b class="fc"><i>55</i>&nbsp;                    return new JsonIssueDumpModule();</b>
+<i>56</i>&nbsp;            }
+<b class="fc"><i>57</i>&nbsp;        } catch (NoOutputTypeDefinedException e) {</b>
+<b class="fc"><i>58</i>&nbsp;            System.out.println(e.getMessage());</b>
+<b class="fc"><i>59</i>&nbsp;            System.out.println(&quot;Preparing default json output&quot;);</b>
+<b class="fc"><i>60</i>&nbsp;            return new JsonIssueDumpModule();</b>
+<b class="fc"><i>61</i>&nbsp;        } catch (NullPointerException e) {</b>
+<b class="fc"><i>62</i>&nbsp;            System.out.println(&quot;Injector service module could not be initialized due to null ArgProcessor.&quot;);</b>
+<b class="fc"><i>63</i>&nbsp;            throw e;</b>
+<i>64</i>&nbsp;        }
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-11-25 13:33</div>
+</div>
+</body>
+</html>

@@ -48,16 +48,16 @@ public class InjectorServiceImpl implements InjectorService {
         try {
             OutputType outputType = argumentProcessor.resolveOutputType();
             switch (outputType) {
-                case JSON:
-                    return new JsonIssueDumpModule();
                 case XML:
-                default:
                     return new XmlIssueDumpModule();
+                case JSON:
+                default:
+                    return new JsonIssueDumpModule();
             }
         } catch (NoOutputTypeDefinedException e) {
             System.out.println(e.getMessage());
-            System.out.println("Preparing default xml output");
-            return new XmlIssueDumpModule();
+            System.out.println("Preparing default json output");
+            return new JsonIssueDumpModule();
         } catch (NullPointerException e) {
             System.out.println("Injector service module could not be initialized due to null ArgProcessor.");
             throw e;

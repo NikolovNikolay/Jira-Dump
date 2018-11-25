@@ -1,0 +1,108 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: XmlIssueDumpModule</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nnikolov.jiradump.guice</a> ]
+</div>
+
+<h1>Coverage Summary for Class: XmlIssueDumpModule (com.nnikolov.jiradump.guice)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">XmlIssueDumpModule</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nnikolov.jiradump.guice;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.google.gson.Gson;
+<i>4</i>&nbsp;import com.google.inject.AbstractModule;
+<i>5</i>&nbsp;import com.nnikolov.jiradump.env.EnvironmentConfiguration;
+<i>6</i>&nbsp;import com.nnikolov.jiradump.env.XmlEnvironmentConfiguration;
+<i>7</i>&nbsp;import com.nnikolov.jiradump.service.IssuePersistService;
+<i>8</i>&nbsp;import com.nnikolov.jiradump.service.PersistenceService;
+<i>9</i>&nbsp;import com.nnikolov.jiradump.utils.IssuePersistenceProgressPrinter;
+<i>10</i>&nbsp;import com.nnikolov.jiradump.writers.Writer;
+<i>11</i>&nbsp;import com.nnikolov.jiradump.writers.XmlFileWriter;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;/**
+<i>14</i>&nbsp; * Guise module with components required for persisting xml files
+<i>15</i>&nbsp; */
+<b class="fc"><i>16</i>&nbsp;public class XmlIssueDumpModule extends AbstractModule {</b>
+<i>17</i>&nbsp;    @Override
+<i>18</i>&nbsp;    protected void configure() {
+<b class="fc"><i>19</i>&nbsp;        bind(EnvironmentConfiguration.class).to(XmlEnvironmentConfiguration.class).asEagerSingleton();</b>
+<b class="fc"><i>20</i>&nbsp;        bind(Writer.class).to(XmlFileWriter.class);</b>
+<b class="fc"><i>21</i>&nbsp;        bind(IssuePersistenceProgressPrinter.class).toInstance(new IssuePersistenceProgressPrinter());</b>
+<b class="fc"><i>22</i>&nbsp;        bind(Gson.class).toInstance(new Gson());</b>
+<b class="fc"><i>23</i>&nbsp;        bind(PersistenceService.class).to(IssuePersistService.class);</b>
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-11-25 13:33</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PersistenceService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nnikolov.jiradump.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PersistenceService (com.nnikolov.jiradump.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">PersistenceService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nnikolov.jiradump.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.mashape.unirest.http.exceptions.UnirestException;
+<i>4</i>&nbsp;import com.nnikolov.jiradump.model.JiraFilterResult;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Takes care of fetching issues and persisting them in files.
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public interface PersistenceService {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * Retrieves an json entity and parses it to a specific model object.
+<i>13</i>&nbsp;     *
+<i>14</i>&nbsp;     * @param clazz the model object type
+<i>15</i>&nbsp;     * @param url   url to fetch from
+<i>16</i>&nbsp;     * @param &lt;T&gt;   generic
+<i>17</i>&nbsp;     * @return parsed model object
+<i>18</i>&nbsp;     * @throws UnirestException if url can&#39;t be loaded
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    &lt;T&gt; T getAsEntity(Class&lt;T&gt; clazz, String url) throws UnirestException;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    /**
+<i>23</i>&nbsp;     * Persists collection of issues.
+<i>24</i>&nbsp;     * The issues are fetched via multiple REST requests using pagination
+<i>25</i>&nbsp;     * until all results from the initial filter request are downloaded or
+<i>26</i>&nbsp;     * attempted to download
+<i>27</i>&nbsp;     *
+<i>28</i>&nbsp;     * @param filterResult initial filter result
+<i>29</i>&nbsp;     */
+<i>30</i>&nbsp;    void persistEntities(JiraFilterResult filterResult);
+<i>31</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-11-25 13:33</div>
+</div>
+</body>
+</html>

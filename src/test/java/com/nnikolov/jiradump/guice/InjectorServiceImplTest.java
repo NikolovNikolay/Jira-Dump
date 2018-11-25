@@ -29,7 +29,7 @@ public class InjectorServiceImplTest {
         when(argProcessor.resolveOutputType()).thenThrow(NoOutputTypeDefinedException.class);
         AbstractModule module = injectorService.produceModule();
         assertNotNull(module);
-        assertEquals(module.getClass(), XmlIssueDumpModule.class);
+        assertEquals(module.getClass(), JsonIssueDumpModule.class);
     }
 
     @Test(expected = NullPointerException.class)
